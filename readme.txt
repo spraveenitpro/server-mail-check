@@ -27,4 +27,4 @@ on the top left side, proceed to click the `Test` button to send out the email.
 
 
 = v 1.0 =
-* Initial release with checks for the PHP and MySQL versions we will likely target for WordPress 3.2
+* Initial release with a feature to check outgoing emails from your WordPress Site.
