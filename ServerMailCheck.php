@@ -2,7 +2,6 @@
 
 /*
 Plugin Name: Server-Mail-Check
-Plugin URI: http://praveen.blog
 Description: Check if the emails are shooting as expected from your hosting server.
 Version: 1.0
 Author: praveen
