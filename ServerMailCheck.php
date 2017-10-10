@@ -25,6 +25,7 @@ class ServerMailCheck
         function render_email_form()
         {
             echo "<h2>Server Mail Check</h2>";
+            if (current_user_can('activate_plugins')){
             $current_user = wp_get_current_user();
             ?>
             <form action="" method="post">
@@ -32,7 +33,11 @@ class ServerMailCheck
                 <input type="submit" name="submit" value="Test">
             </form>
 
+
         <?php
+            } else {
+                echo "Only Administrators Can use this Plugin!";
+            }
 
             if (isset($_POST["submit"])) {
                 $headers = array('Content-Type: text/html; charset=UTF-8');
@@ -52,6 +57,10 @@ class ServerMailCheck
 
 }
 
-ServerMailCheck::render_dashboard_page();
+
+    ServerMailCheck::render_dashboard_page();
+
+
+
 
 ?>
