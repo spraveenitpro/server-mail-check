@@ -4,8 +4,8 @@
 Plugin Name: Server-Mail-Check
 Description: Check if the emails are shooting as expected from your hosting server.
 Version: 1.0
-Author: praveen
-Author URI: http://praveen.blog
+Author: Praveen
+Author URI: http://Praveen.blog
 License: GPL2
 */
 
@@ -24,12 +24,14 @@ class ServerMailCheck
 
         function render_email_form()
         {
+
             echo "<h2>Server Mail Check</h2>";
             if (current_user_can('activate_plugins')){
             $current_user = wp_get_current_user();
             ?>
-            <form action="" method="post">
+            <form method="post">
                 <label>Enter your email address:</label> <input id="email" type="email" name="yourmail" value="<?php echo $current_user->user_email; ?>" disabled="disabled">
+                <input type="hidden" name="_nonce" value="<?php echo wp_create_nonce('submit-user'); ?>">
                 <input type="submit" name="submit" value="Test">
             </form>
 
@@ -40,15 +42,17 @@ class ServerMailCheck
             }
 
             if (isset($_POST["submit"])) {
-                $headers = array('Content-Type: text/html; charset=UTF-8');
-                $to = $current_user->user_email;
-                $title = "Test email from " . get_bloginfo("url");
-                $body = "This test email proves that your WordPress installation can send emails";
-                $mailresult = wp_mail($to, $title, $body, $headers);
-                if ($mailresult) {
-                    echo 'Email Works!!.';
-                } else {
-                    echo 'There seems to be some issue with the sending out of emails!';
+                if ( wp_verify_nonce($_POST['_nonce'], 'submit-user')) {
+                    $headers = array('Content-Type: text/html; charset=UTF-8');
+                    $to = $current_user->user_email;
+                    $title = "Test email from " . get_bloginfo("url");
+                    $body = "This test email proves that your WordPress installation can send emails";
+                    $mailresult = wp_mail($to, $title, $body, $headers);
+                    if ($mailresult) {
+                        echo 'Email Works!!.';
+                    } else {
+                        echo 'There seems to be some issue with the sending out of emails!';
+                    }
                 }
             }
         }
