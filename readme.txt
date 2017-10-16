@@ -1,6 +1,9 @@
-readme.=== Mail Check ===
+
+=== Server Mail Check ===
+
+
 Tags: Email Check
-Contributors: Praveen
+Contributors: spraveenitpro
 Requires at least: 4.0.0
 Tested up to: 4.3.0
 
@@ -16,6 +19,7 @@ In future this plugin will also provide a whole suite of checks for other things
 
 1. Upload to your plugins folder, usually `wp-content/plugins/`
 2. Activate the plugin on the plugin screen.
+3. Navigate to ** Dashboard > Check Email ** and click the `Test` button.
 
 == Screenshots ==
 
